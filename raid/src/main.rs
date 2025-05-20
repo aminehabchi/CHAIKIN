@@ -32,7 +32,7 @@ fn main() {
 
     let mut step: u8 = 0;
     let mut points: Vec<Point> = Vec::new();
-
+    let mut animate = false;
     while window.is_open() && !window.is_key_down(Key::Escape) {
         // clear window if click on space
         if window.is_key_down(Key::Space) {
@@ -40,11 +40,22 @@ fn main() {
             arr = Vec::new();
             points = Vec::new();
             step = 0;
+            animate = false;
         }
-
-        if arr.len() == 4 && step < 8 {
+        if window.is_key_down(Key::Enter) {
+            for i in 0..arr.len() - 1 {
+                Line::new(arr[i].clone(), arr[i + 1].clone()).draw(
+                    &mut buffer,
+                    width,
+                    height,
+                    0xFFFFFF,
+                );
+            }
+            points = arr.clone();
+            animate = true
+        }
+        if animate && step < 8 {
             let mut new_points: Vec<Point> = Vec::new();
-
             new_points.push(points[0].clone());
             for i in 1..points.len() {
                 let q = get_25(points[i - 1].clone(), points[i].clone());
@@ -68,39 +79,20 @@ fn main() {
                     0xFFFFFF,
                 )
             }
+            for p in &arr {
+                Circle::new(p.clone(), 3).draw(&mut buffer, width, height, 0xFFFFFF);
+            }
         }
 
         if window.get_mouse_down(MouseButton::Left) {
             if let Some((x, y)) = window.get_mouse_pos(minifb::MouseMode::Discard) {
-                if arr.len() < 4 && !(last_x == x && last_y == y) {
+                if !animate && !(last_x == x && last_y == y) {
                     arr.push(Point { x, y });
                     last_x = x;
                     last_y = y;
 
                     if (x as usize) < width && (y as usize) < height {
                         Circle::new(Point { x, y }, 3).draw(&mut buffer, width, height, 0xFFFFFF);
-                    }
-
-                    if arr.len() == 4 {
-                        Line::new(arr[0].clone(), arr[1].clone()).draw(
-                            &mut buffer,
-                            width,
-                            height,
-                            0xFFFFFF,
-                        );
-                        Line::new(arr[1].clone(), arr[2].clone()).draw(
-                            &mut buffer,
-                            width,
-                            height,
-                            0xFFFFFF,
-                        );
-                         Line::new(arr[2].clone(), arr[3].clone()).draw(
-                            &mut buffer,
-                            width,
-                            height,
-                            0xFFFFFF,
-                        );
-                        points = arr.clone();
                     }
                 }
             }
