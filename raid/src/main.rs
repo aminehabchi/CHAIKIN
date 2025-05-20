@@ -42,7 +42,7 @@ fn main() {
             step = 0;
         }
 
-        if arr.len() == 4 && step < 8 {
+        if arr.len() == 3 && step < 6 && window.is_key_down(Key::Enter){
             let mut new_points: Vec<Point> = Vec::new();
 
             new_points.push(points[0].clone());
@@ -72,7 +72,7 @@ fn main() {
 
         if window.get_mouse_down(MouseButton::Left) {
             if let Some((x, y)) = window.get_mouse_pos(minifb::MouseMode::Discard) {
-                if arr.len() < 4 && !(last_x == x && last_y == y) {
+                if arr.len() < 3 && !(last_x == x && last_y == y) {
                     arr.push(Point { x, y });
                     last_x = x;
                     last_y = y;
@@ -81,7 +81,7 @@ fn main() {
                         Circle::new(Point { x, y }, 3).draw(&mut buffer, width, height, 0xFFFFFF);
                     }
 
-                    if arr.len() == 4 {
+                    if arr.len() == 3 {
                         Line::new(arr[0].clone(), arr[1].clone()).draw(
                             &mut buffer,
                             width,
@@ -94,12 +94,12 @@ fn main() {
                             height,
                             0xFFFFFF,
                         );
-                         Line::new(arr[2].clone(), arr[3].clone()).draw(
-                            &mut buffer,
-                            width,
-                            height,
-                            0xFFFFFF,
-                        );
+                        //  Line::new(arr[2].clone(), arr[3].clone()).draw(
+                        //     &mut buffer,
+                        //     width,
+                        //     height,
+                        //     0xFFFFFF,
+                        // );
                         points = arr.clone();
                     }
                 }
