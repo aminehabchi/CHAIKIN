@@ -42,7 +42,7 @@ fn main() {
             step = 0;
             animate = false;
         }
-        if window.is_key_down(Key::Enter) {
+        if window.is_key_down(Key::Enter) &&!animate {
             for i in 0..arr.len() - 1 {
                 Line::new(arr[i].clone(), arr[i + 1].clone()).draw(
                     &mut buffer,
@@ -54,7 +54,7 @@ fn main() {
             points = arr.clone();
             animate = true
         }
-        if animate && step < 8 {
+        if animate {
             let mut new_points: Vec<Point> = Vec::new();
             new_points.push(points[0].clone());
             for i in 1..points.len() {
