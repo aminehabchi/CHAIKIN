@@ -49,7 +49,7 @@ fn main() {
             animate = true
         }
         
-        if animate {
+        if animate && step<8 {
             step += 1;
             points=chakin(points);
             clear_window(&mut buffer);
