@@ -18,7 +18,7 @@ fn main() {
 
     let mut last_x: f32 = -1.0;
     let mut last_y: f32 = -1.0;
-
+#[allow(unused_variables)]
     let mut step: u8 = 0;
     let mut points: Vec<Point> = Vec::new();
     let mut animate = false;
