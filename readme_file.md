@@ -28,11 +28,6 @@ Chaikin's algorithm progressively smooths a polyline by replacing each line segm
 - Move points by dragging them
 - Press ESC to exit
 
-**Usage:**
-```bash
-cargo run --bin chaikin
-```
-
 ### Radar Animation
 ![Radar Animation](./radar.mov)
 
@@ -43,10 +38,6 @@ A classic radar display simulation with a sweeping line and randomly appearing b
 - Random echo blips that fade over time
 - Press ESC to exit
 
-**Usage:**
-```bash
-cargo run --bin radar
-```
 
 ### Snake Cursor Follower
 ![Snake Cursor Follower](./snack.mov)
@@ -58,10 +49,6 @@ A snake-like entity that smoothly follows your mouse cursor around the screen.
 - Body segments follow the head with delay effect
 - Press ESC to exit
 
-**Usage:**
-```bash
-cargo run --bin snake
-```
 
 ## Requirements
 
@@ -81,13 +68,6 @@ git https://github.com/aminehabchi/CHAIKIN.git
 Build all demos:
 ```bash
 cargo build --release
-```
-
-Run a specific demo (examples):
-```bash
-cargo run --release --bin chaikin
-cargo run --release --bin radar
-cargo run --release --bin snake
 ```
 
 ## Implementation Details
