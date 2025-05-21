@@ -1,98 +1,118 @@
-# Rust Graphics Demonstrations with minifb
+# Rust Graphics Demonstrations with `minifb`
 
-This repository contains three interactive graphical demonstrations built with Rust and the [minifb](https://github.com/emoon/rust_minifb) library.
+This repository showcases three interactive graphical demonstrations built in Rust using the [`minifb`](https://github.com/emoon/rust_minifb) window library.
 
-## Programs Included
+## Included Demos
 
 ### 1. Chaikin's Curve Algorithm Animation
-An interactive implementation of Chaikin's curve algorithm with step-by-step animation.
+An interactive and animated implementation of Chaikin’s curve smoothing algorithm.
 
 ### 2. Radar Animation
-A simple radar animation with sweeping line and blips.
+A classic radar-style animation featuring a sweeping line and disappearing blips.
 
 ### 3. Snake Cursor Follower
-A snake that follows your cursor movements across the screen.
+A smooth snake-like animation that follows the user's cursor in real-time.
+
+---
 
 ## Demonstrations
 
 ### Chaikin's Curve Algorithm
-![Chaikin's Curve Animation](./CHAKIN.mov)
+![Chaikin's Curve Animation](./chaikin.mp4)
 
-Chaikin's algorithm progressively smooths a polyline by replacing each line segment with two shorter segments, creating a curve-like appearance over multiple iterations.
+Chaikin's algorithm iteratively smooths a polyline by subdividing line segments, producing a curve-like effect.
 
 **Features:**
-- Place control points with left mouse button
-- Press ENTER to start the animation
-- Animation cycles through 7 steps of curve refinement
-- Clear screen with C key
-- Move points by dragging them
-- Press ESC to exit
+- Place control points with **left mouse button**
+- Start animation with **Enter**
+- Runs through **7 refinement steps**
+- Clear screen with **C**
+- **Drag points** to move them
+- Exit with **Esc**
+
+---
 
 ### Radar Animation
-![Radar Animation](./radar.mov)
+![Radar Animation](./radar.mp4)
 
-A classic radar display simulation with a sweeping line and randomly appearing blips.
+A stylized radar simulation featuring:
 
 **Features:**
-- Radar sweep animation
-- Random echo blips that fade over time
-- Press ESC to exit
+- Rotating sweep line
+- Random blips that fade over time
+- Concentric range rings
+- Exit with **Esc**
 
+---
 
 ### Snake Cursor Follower
-![Snake Cursor Follower](./snack.mov)
+![Snake Cursor Follower](./snack.mp4)
 
-A snake-like entity that smoothly follows your mouse cursor around the screen.
+A fun snake-like follower that reacts to mouse movement.
 
 **Features:**
-- Snake follows cursor movement with natural-looking motion
-- Body segments follow the head with delay effect
-- Press ESC to exit
+- Smooth motion with physics-inspired spring behavior
+- Segments follow each other with delay
+- Exit with **Esc**
 
+---
 
 ## Requirements
 
-- Rust 1.50 or higher
-- Cargo package manager
+- Rust **1.50+**
+- `cargo` package manager
+
+---
 
 ## Installation
 
-Clone the repository:
-```bash
-git https://github.com/aminehabchi/CHAIKIN.git
+Clone this repository:
 
+```bash
+git clone https://github.com/aminehabchi/CHAIKIN.git
+cd CHAIKIN
 ```
+
+---
 
 ## Building and Running
 
-Build all demos:
+To build all demos:
+
 ```bash
 cargo build --release
 ```
 
+Run a specific demo (example for Chaikin):
+
+```bash
+cargo run --release --bin chaikin
+```
+
+---
+
 ## Implementation Details
 
 ### Chaikin's Algorithm
-The implementation follows these steps:
-1. User places control points to form a polyline
-2. For each iteration:
-   - Each line segment AB is replaced with two new points:
-   - One at 1/4 of the way from A to B
-   - One at 3/4 of the way from A to B
-3. The process repeats for 7 steps, creating a progressively smoothed curve
+Steps:
+1. Users define a polyline by placing control points.
+2. Each iteration replaces every segment AB with two points:
+   - One at **¼** of the way from A to B
+   - One at **¾** of the way from A to B
+3. This is repeated for **7 iterations** to smooth the shape.
 
 ### Radar Animation
-Uses rotation mathematics to create:
-1. A sweeping line that rotates 360 degrees
-2. Random "blips" that appear and fade over time
-3. Distance rings for scale reference
+- Uses trigonometric rotation to animate a **sweeping line**
+- **Blips** appear randomly and fade
+- **Range rings** offer visual scale
 
 ### Snake Cursor Follower
-Implements:
-1. A physics-based follower system with spring-like properties
-2. Multiple segments that follow the segment in front of them
-3. Smooth movement with velocity and acceleration
+- Uses **spring physics** for smooth trailing
+- Segments track the one before it
+- Real-time interaction with **mouse position**
+
+---
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to open an issue or submit a pull request.
