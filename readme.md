@@ -73,23 +73,6 @@ git clone https://github.com/aminehabchi/CHAIKIN.git
 cd CHAIKIN
 ```
 
----
-
-## Building and Running
-
-To build all demos:
-
-```bash
-cargo build --release
-```
-
-Run a specific demo (example for Chaikin):
-
-```bash
-cargo run --release --bin chaikin
-```
-
----
 
 ## Implementation Details
 
